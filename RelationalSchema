@@ -1,6 +1,7 @@
 CREATE TABLE Owner (
   name VARCHAR(50),
   addr VARCHAR(200)
+);
   
 CREATE TABLE ip (
   url VARCHAR(200) PRIMARY KEY,
@@ -9,3 +10,4 @@ CREATE TABLE ip (
   
 CREATE TABLE patent (
   appNum 
+);
