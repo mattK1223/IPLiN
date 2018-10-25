@@ -1,0 +1,11 @@
+CREATE TABLE Owner (
+  name VARCHAR(50),
+  addr VARCHAR(200)
+  
+CREATE TABLE ip (
+  url VARCHAR(200) PRIMARY KEY,
+  title VARCHAR(200)
+  );
+  
+CREATE TABLE patent (
+  appNum 
