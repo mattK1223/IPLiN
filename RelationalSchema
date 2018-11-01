@@ -44,3 +44,4 @@ CREATE TABLE License (
   PRIMARY KEY(url, licensee),
   FOREIGN KEY(url) REFERENCES ip
 );
+ 
