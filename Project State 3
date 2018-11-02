@@ -1,5 +1,53 @@
+Relational Schema:
 
+CREATE TABLE Owner (
+  name VARCHAR(50),
+  addr VARCHAR(200)
+);
+  
+CREATE TABLE ip (
+  url VARCHAR(200) PRIMARY KEY,
+  title VARCHAR(200)
+);
+  
+CREATE TABLE patent (
+  url VARCHAR(200) PRIMARY KEY, 
+  appNum INT, 
+  patentNum INT,
+  filingDate DATE,
+  issueDate DATE,
+  abstract VARCHAR(1000),
+  FOREIGN KEY(url) REFERENCES ip
+);
 
+CREATE TABLE trademark (
+  url VARCHAR(200) PRIMARY KEY,
+  serialNum INT,
+  status CHAR(4),
+  filingDate DATE,
+  FOREIGN KEY(url) REFERENCES ip
+);
+
+CREATE TABLE copyright (
+  url VARCHAR(200) PRIMARY KEY,
+  registrationNum INT,
+  publicationDate DATE,
+  registrationDate DATE,
+  type VARCHAR(100),
+  FOREIGN KEY(url) REFERENCES ip
+);
+
+CREATE TABLE License (
+  licensee VARCHAR(100),
+  url VARCHAR(100),
+  startDate DATE,
+  endDate DATE,
+  payment REAL,
+  PRIMARY KEY(url, licensee),
+  FOREIGN KEY(url) REFERENCES ip
+);
+
+Division of Labor:
 
 The DBMS we will use is mySQL. Our language of choice will be C++. 
 
