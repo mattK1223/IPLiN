@@ -61,7 +61,9 @@ CREATE TABLE License (
   payment REAL,
   PRIMARY KEY(ownerName, url, licensee),
   FOREIGN KEY(ownerName) REFERENCES Owner,
-  FOREIGN KEY(url) REFERENCES ip
+    ON DELETE CASCADE
+  FOREIGN KEY(url) REFERENCES ip,
+    ON DELETE CASCADE
 );
 
 
