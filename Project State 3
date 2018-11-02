@@ -47,6 +47,7 @@ CREATE TABLE License (
   FOREIGN KEY(url) REFERENCES ip
 );
 
+
 Division of Labor:
 
 The DBMS we will use is mySQL. Our language of choice will be C++. 
@@ -58,3 +59,15 @@ Division of Labor
 Riley - Web application
 Alexy - Web scraping
 Matt - SQL 
+
+
+Plan of Action ( Schedule of Dates ) :
+
+10/22/2018 - Relational Schema Creation, Refinement
+10/29/2018 - Implement Relational Schema
+11/5/2018 - Populating Database
+11/12/2018 - Web App Creation
+11/19/2018 - Linkage of Database with Web App
+11/26/2018 - Complex Function Creation
+12/3/2018 - Project Done
+12/10/2018 - Celebration of Completion
