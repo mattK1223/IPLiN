@@ -5,28 +5,31 @@ CREATE TABLE Owner (
   
 CREATE TABLE ip (
   ownerName VARCHAR(50) NOT NULL,
-  url VARCHAR(200),
+  url VARCHAR(200) PRIMARY KEY,
   title VARCHAR(200),
-  PRIMARY KEY(name, url)
+  FOREIGN KEY(ownerName) REFERENCES Owner,
+    ON DELETE CASCADE
 );
   
 CREATE TABLE patent (
   url VARCHAR(200) PRIMARY KEY, 
-  appNum INT, 
-  patentNum INT,
+  appNum INT UNIQUE, 
+  patentNum INT UNIQUE,
   filingDate DATE,
   issueDate DATE,
   abstract VARCHAR(1000),
-  FOREIGN KEY(url) REFERENCES ip
+  FOREIGN KEY(url) REFERENCES ip,
+    ON DELETE CASCADE
 );
 
 CREATE TABLE trademark (
   url VARCHAR(200) PRIMARY KEY,
-  serialNum INT,
-  regNum INT,
+  serialNum INT UNIQUE,
+  regNum INT UNIQUE,
   status CHAR(4),
   filingDate DATE,
-  FOREIGN KEY(url) REFERENCES ip
+  FOREIGN KEY(url) REFERENCES ip,
+    ON DELETE CASCADE
 );
 
 CREATE TABLE copyright (
@@ -35,13 +38,16 @@ CREATE TABLE copyright (
   publicationDate DATE,
   registrationDate DATE,
   type VARCHAR(100),
-  FOREIGN KEY(url) REFERENCES ip
+  FOREIGN KEY(url) REFERENCES ip,
+    ON DELETE CASCADE
 );
 
 CREATE TABLE video (
   url VARCHAR(200) PRIMARY KEY, 
   channelURL VARCHAR(200),
-  publicationDate DATE
+  publicationDate DATE,
+  FOREIGN KEY(url) REFERENCES ip,
+    ON DELETE CASCADE
 );
 
 CREATE TABLE License (
