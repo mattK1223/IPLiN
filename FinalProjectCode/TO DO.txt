@@ -1,0 +1,98 @@
+1) Create functions
+	a) Insert: {Present dropdown menu to select (i), (ii), or (iii) }
+		  (i) Owner
+		 (ii) IP
+			Note: May either select existing Owner (from dropdown menu) or insert new Owner
+			Note: Must select type of IP from dropdown menu
+		(iIi) License
+			Note: Must select existing IP
+			Note: For convenience, user should be able to filter based on Owner/IP type
+				Use checkboxes
+	
+	b) Update: {Present dropdown menu to select (i), (ii), or (iii) }
+		  (i) Change Owner Info: {Use dropdown menu to select by name}
+			1) Change name
+			2) Change address
+		 (ii) Change IP Info: {Use dropdown menu to select by type; then Title}
+			1) Change only IP Info
+				1) Change url
+				2) Change title
+				3) OF SPECIFIC TYPE: {Use dropdown menu}
+					a) Patent:
+						  (i) appNum
+						 (ii) patentNum
+						(iii) filingDate
+						 (iv) issueDate
+						  (v) abstract {Big text box for this one}
+				  	b) Trademark:
+				  		    (i) serialNum
+				  		   (ii) registNum
+				  		  (iii) status {Dropdown menu}
+		  		  	c) Copyright:
+		  		  			  (i) registrationNum
+		  		  			 (ii) registrationDate
+		  		  			(iii) publicationDate
+		  		  			 (iv) type
+	  			 	d) YouTube Video:
+	  			 			(i) publicationDate
+			2) Reassigment
+				a) Reassign to existing Owner (use dropdown menu)
+				b) Reassign to new Owner (insert Owner)
+				c) In either case, ownerName in IP is changed
+					Note: Any Licenses involving this IP must be deleted
+		(iii) Change License Agreement Info: {Use dropdown menu to select by Licensee; then Title}
+			1) Change startDate
+			2) Change endDate
+			3) Change payment
+
+	c) Delete: {Present dropdown menu to select (i), (ii), or (iii) }
+		  (i) Owner (cascades to IP and License)
+			1) Checkbox list to select [ownerName(s)]
+		 (ii) IP
+			1) Allow user to filter using ownerName
+			2) Allow user to filter using type (Patent, Trademark, Copyright, YT Video)
+			3) Checkbox list to select [type, IP title, ownerName]
+		(iii) License
+			1) Checkbox list to select [Licensee, ownerName, IP title]
+
+	d) Search for: {Present dropdown menu to select (i), (ii), or (iii) }	{Clean up search string; use string LIKE query}
+		  (i) Owners by name
+		 (ii) IP by:
+			1) title
+			2) type (Patent, Trademark, Copyright, YT Video)
+			3) owner name
+			4) licensee name
+		(iii) License
+	e) Statistics:
+		  (i) List ALL Owners
+		 (ii) List ALL IP owned by a SPECIFIC Owner {Use dropdown menu to select Owner}
+		(iii) List ALL Licensees
+		(iii) List ALL License Agreements by a SPECIFIC Licensee {Use dropdown menu to select Licensee}
+		 (iv) Use COUNT function to count:
+			1) TOTAL # of Owners
+			2) TOTAL # of Intellectual Properties (and break down by type of intellectual properties)
+			3) TOTAL # of Intellectual Properties owned by a SPECIFIC Owner (and break down by type of intellectual properties)
+			4) TOTAL # of License Agreements
+			5) TOTAL # of DISTINCT Licensees & DISTINCT ownerNames
+			6) TOTAL # of DISTINCT IPs that are licensed out
+			7) TOTAL # of DISTINCT Licensees
+----------------------------------
+	y) YouTube webscraping
+	z) Recommendation (in Search page)
+		 (i) Recommend Top Ten other IP of same type (SORTED by # of License Agreements with that IP)		** Option 1: SELECT TOP 10 [rest of SELECT statement...]
+		(ii) Recommend Top Ten other IP by same Owner (SORTED by # of License Agreements with that IP)		** Option 2: [S-F-M clauses] LIMIT 10;
+
+=========================================================
+2) Put License table in Normal Form (3NF maybe?):
+	ownerName not needed. Can be determined using IP.
+
+3) Create TRIGGER to make sure that license.endDate > license.startDate
+		BEFORE INSERT
+		BEFORE UPDATE
+
+=========================================================
+3) Add a few more entries into spreadsheet
+	a) License table
+	b) One Owner owning multiple IPs
+	c) One Licensee licensing out multiple IPs
+	d) One IP (of each type) being licensed out to multiple people
