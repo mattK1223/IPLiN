@@ -26,6 +26,40 @@ a:visited {
 
 <body style="background-color:lightgreen">
 
+<script>
+function ChangeDisplay() {
+	var Type = document.getElementById("copyType");
+	var Copy = document.getElementById("copySelect");
+	var Patent = document.getElementById("patentSelect");
+	var Trade = document.getElementById("tradeSelect");
+		
+	if ( Type.value == "All" )
+	{
+		Copy.style.display = "none";
+		Patent.style.display = "none";
+		Trade.style.display = "none";
+	}
+	else if ( Type.value == "Copyright" )
+	{
+		Copy.style.display = "initial";
+		Patent.style.display = "none";
+		Trade.style.display = "none";
+	}
+	else if ( Type.value == "Patent" )
+	{
+		Copy.style.display = "none";
+		Patent.style.display = "initial";
+		Trade.style.display = "none";
+	}
+	else if ( Type.value == "Trademark" )
+	{
+		Copy.style.display = "none";
+		Patent.style.display = "none";
+		Trade.style.display = "initial";
+	}
+}
+</script>
+
 <ul>
   <li><a href="home.html"> Home </a></li>
   <li><a href="insert.html"> Insert </a></li>
@@ -39,14 +73,89 @@ a:visited {
 <form action="/search_owner.php">
 <center>
 <font  face="Verdana" color="black" size="2">
-Owner: <input type="text" name="keyword"> 
-Type: <select>
-	<option value="all">All</option> 
-	<option value="Copyright">Copyright</option>
-	<option value="Patent">Patent</option>
-	<option value="Trademark">Trademark</option>
+
+Type: <select id="copyType" onchange="ChangeDisplay()">
+	<option selected value="All"> All </option> 
+	<option value="Copyright"> Copyright </option>
+	<option value="Patent"> Patent </option>
+	<option value="Trademark"> Trademark </option>
 </select>
+</br>
+
+Owner: 
+<input type="text" name="Owner"> 
+</br>
+Owner Address:
+<input type="text" name="Address">
+</br>
+URL:
+<input type="url" name="URL">
+</br>
+Title:
+<input type="text" name="Title">
+</br>
+
+<div id="copySelect" style="display:none">
+</br></br>Copyright:</br>
+
+Registration Number:
+<input type="text" name="copyReg">
+</br>
+Registration Date:
+<input type="date" name="copyRegDate">
+</br>
+Publication Date:
+<input type="date" name="copyPubDate">
+</br>
+Type of Work:
+<input type="text" name="copyWorkType">
+</br>
+
+</div>
+
+<div id="patentSelect" style="display:none">
+</br></br>Patent:</br>
+
+Application Number:
+<input type="text" name="patentAppNum">
+</br>
+Patent Number:
+<input type="text" name="patentPatNum">
+</br>
+Filing Date:
+<input type="date" name="patentFilingDate">
+</br>
+Issue Date:
+<input type="date" name="patentIssueDate">
+</br>
+Abstract:
+<input type="text" name="patentAbstract">
+</br>
+
+</div>
+
+<div id="tradeSelect" style="display:none">
+</br></br>Trademark:</br>
+
+Serial Number:
+<input type="text" name="tradeSerial">
+</br>
+Registration Number:
+<input type="text" name="tradeRegNum">
+</br>
+Status:
+<input type="text" name="tradeStatus">
+</br>
+Filing Date:
+<input type="date" name="tradeFilingDate">
+</br>
+
+</div>
+
+</br>
+</br>
 <input type="submit" value="Search">
+
 </font>
 </center>
 </form>
